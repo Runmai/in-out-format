@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Attendance — Stark Communication</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>⚡ Stark Communication</h1>
+    <p>Employee Daily Attendance Tracker</p>
+  </header>
+
+  <main>
+
+    <!-- Clock In / Out Panel -->
+    <section class="card punch-card">
+      <h2>Punch In / Out</h2>
+      <div class="form-row">
+        <input type="text" id="empId" placeholder="Employee ID (e.g. EMP001)" />
+        <input type="text" id="empName" placeholder="Full Name" />
+      </div>
+      <div class="btn-row">
+        <button class="btn green" onclick="punch('in')">🟢 Clock In</button>
+        <button class="btn red"   onclick="punch('out')">🔴 Clock Out</button>
+      </div>
+      <p id="msg" class="msg"></p>
+    </section>
+
+    <!-- Date Filter -->
+    <section class="card">
+      <div class="filter-row">
+        <label>View Date:</label>
+        <input type="date" id="filterDate" onchange="renderTable()" />
+        <button class="btn blue" onclick="clearDay()">🗑 Clear This Day</button>
+        <button class="btn grey" onclick="exportCSV()">⬇ Export CSV</button>
+      </div>
+    </section>
+
+    <!-- Daily Log Table -->
+    <section class="card">
+      <h2>Daily Log — <span id="displayDate"></span></h2>
+      <div class="table-wrap">
+        <table id="logTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Clock In</th>
+              <th>Clock Out</th>
+              <th>Hours</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="logBody"></tbody>
+        </table>
+        <p id="noData" class="no-data hidden">No records for this date.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Stark Communication &nbsp;|&nbsp; Data stored locally in your browser</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
